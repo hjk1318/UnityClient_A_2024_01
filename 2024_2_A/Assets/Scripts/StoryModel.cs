@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static STORYGAME.StoryTableObject;
+using STORYGAME;
 
 [CreateAssetMenu(fileName = "NewStory", menuName = "ScriptavleObject/StoryTableObject")]
 
@@ -17,8 +17,8 @@ public class StoryModel : MonoBehaviour
         SERIAL
     }
 
-    public STORYTYPE storygame;
-    public bool storytype;
+    public STORYTYPE storytype;
+    //public bool storytype;
 
     [TextArea(10, 10)]
     public string storyText;
@@ -72,7 +72,7 @@ public class StoryModel : MonoBehaviour
 
         public ResultType resultType;
         public int value;
-        public StateMachineBehaviour stats;
+        public Stats stats;
 
     }
 }
