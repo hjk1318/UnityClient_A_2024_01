@@ -3,76 +3,76 @@ using System.Collections.Generic;
 using UnityEngine;
 using STORYGAME;
 
-[CreateAssetMenu(fileName = "NewStory", menuName = "ScriptavleObject/StoryTableObject")]
+    [CreateAssetMenu(fileName = "NewStory", menuName = "ScriptavleObject/StoryTableModel")]
 
-public class StoryModel : MonoBehaviour
+    public class StoryModel : ScriptableObject
 {
-    public int storyNumber;
-    public Texture2D mainImage;
+        public int storyNumber;
+        public Texture2D MainImage;
 
-    public enum STORYTYPE
-    {
-        MAIN,
-        SUB,
-        SERIAL
-    }
-
-    public STORYTYPE storytype;
-    //public bool storytype;
-
-    [TextArea(10, 10)]
-    public string storyText;
-
-    public Option[] option;
-
-    [System.Serializable]
-    public class Option
-    {
-        public string optionText;
-        public string buttonText;
-        public EventCheck eventCheck;
-    }
-
-    [System.Serializable]
-    public class EventCheck
-    {
-        public int checkValue;
-        public enum EventType : int
+        public enum STORYTYPE
         {
-            NONE,
-            GoToBattle,
-            CheckSTR,
-            CheckDEX,
-            CheckCON,
-            CheckINT,
-            CheckWIS,
-            CheckCHA
+            MAIN,
+            SUB,
+            SERIAL
         }
 
-        public EventType eventType;
+        public STORYTYPE storytype;
+        //public bool storytype;
 
-        public Result[] suceessResult;
-        public Result[] failResult;
-    }
+        [TextArea(10, 10)]
+        public string storyText;
 
+        public Option[] option;
 
-    [System.Serializable]
-    public class Result
-    {
-        public enum ResultType : int
+        [System.Serializable]
+        public class Option
         {
-            ChangeHp,
-            ChangeSp,
-            AddExperience,
-            GoToShop,
-            GoToNextStory,
-            GoToRandomStory,
-            GoToEnding
+            public string optionText;
+            public string buttonText;
+            public EventCheck eventCheck;
         }
 
-        public ResultType resultType;
-        public int value;
-        public Stats stats;
+        [System.Serializable]
+        public class EventCheck
+        {
+            public int checkValue;
+            public enum EventType : int
+            {
+                NONE,
+                GoToBattle,
+                CheckSTR,
+                CheckDEX,
+                CheckCON,
+                CheckINT,
+                CheckWIS,
+                CheckCHA
+            }
 
+            public EventType eventType;
+
+            public Result[] suceessResult;
+            public Result[] failResult;
+        }
+
+
+        [System.Serializable]
+        public class Result
+        {
+            public enum ResultType : int
+            {
+                ChangeHp,
+                ChangeSp,
+                AddExperience,
+                GoToShop,
+                GoToNextStory,
+                GoToRandomStory,
+                GoToEnding
+            }
+
+            public ResultType resultType;
+            public int value;
+            public Stats stats;
+
+        }
     }
-}
