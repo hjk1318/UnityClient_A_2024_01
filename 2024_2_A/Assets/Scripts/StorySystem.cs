@@ -11,6 +11,7 @@ public class StorySystem : MonoBehaviour
 
     public enum TEXTSYSTEM
     {
+        NONE,
         DOING,
         SELECT,
         DONE
@@ -26,6 +27,7 @@ public class StorySystem : MonoBehaviour
     public Button[] buttonWay = new Button[3];
     public Text[] buttonWayText = new Text[3];
 
+    public TEXTSYSTEM currentTextShow = TEXTSYSTEM.NONE;
 
     private void Awake()
     {
@@ -42,12 +44,12 @@ public class StorySystem : MonoBehaviour
             buttonWay[i].onClick.AddListener(() => OnWayClick(wayIndex));
         }
 
-        StoryModelinit();
-        StartCoroutine(ShowText());
+        CoshowText();
     }
-
+        
     public void StoryModelinit()
     {
+
         fullText = currentStoryModel.storyText;
         StoryIndex.text = currentStoryModel.storyNumber.ToString();
 
@@ -57,14 +59,46 @@ public class StorySystem : MonoBehaviour
         }
     }
 
- 
+
     public void OnWayClick(int index)
     {
+        if (currentTextShow == TEXTSYSTEM.DOING)
+            return;
 
+        bool CheckEventTypeNone = false;
+        StoryModel playStoryModel = currentStoryModel;
+
+        if(playStoryModel.option[index]. eventCheck.eventType == StoryModel.EventCheck.EventType.NONE)
+        {
+            for(int i = 0; i < playStoryModel.option[index].eventCheck.suceessResult.Length;i++)
+            {
+                GameSystem.instance.ApplyChoice(currentStoryModel.option[index].eventCheck.suceessResult[i]);
+                CheckEventTypeNone = true;
+            }
+        }
+    }
+
+    public void CoshowText()
+    {
+        StoryModelinit();
+        ResetShow();
+        StartCoroutine(ShowText());
+    }
+
+    public void ResetShow()
+    {
+        textComponent.text = "";
+        
+        for(int i = 0; i < buttonWay.Length; i++)
+        {
+            buttonWay[i].gameObject.SetActive(false);
+        }
     }
     IEnumerator ShowText()
     {
-        if(currentStoryModel.MainImage != null)
+        currentTextShow = TEXTSYSTEM.DOING;
+
+        if (currentStoryModel.MainImage != null)
         {
             Rect rect = new Rect(0, 0, currentStoryModel.MainImage.width, currentStoryModel.MainImage.height);
             Vector2 pivot = new Vector2(0.5f, 0.5f);
@@ -91,5 +125,7 @@ public class StorySystem : MonoBehaviour
         }
 
         yield return new WaitForSeconds(delay);
+
+        currentTextShow = TEXTSYSTEM.NONE;
     }
 }

@@ -281,6 +281,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 182231810}
   m_CullTransparentMesh: 1
+--- !u!1 &323210795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 323210797}
+  - component: {fileID: 323210796}
+  m_Layer: 0
+  m_Name: GameSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &323210796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323210795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd6502e9437ea942b6b29a3c041a1f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyModels:
+  - {fileID: 11400000, guid: 409ccf5061cb2d940a06b330953b17dc, type: 2}
+  - {fileID: 11400000, guid: 9b564844e4026254b946e2d92b1eb261, type: 2}
+  stats:
+    hpPoint: 0
+    spPoint: 0
+    currentHpPoint: 0
+    currentSpPoint: 0
+    currentXpPoint: 0
+    strength: 0
+    dexterity: 0
+    consitiution: 0
+    Intelligence: 0
+    wisdom: 0
+    charisma: 0
+  currentState: 0
+  currentStoryIndex: 1
+--- !u!4 &323210797
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323210795}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &409873203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,7 +1432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentStoryModel: {fileID: 11400000, guid: 409ccf5061cb2d940a06b330953b17dc, type: 2}
-  delay: 0.1
+  delay: 0.01
   fullText: 
   textComponent: {fileID: 15715042}
   StoryIndex: {fileID: 1760605369}
@@ -1384,6 +1445,7 @@ MonoBehaviour:
   - {fileID: 182231812}
   - {fileID: 1539481236}
   - {fileID: 876682113}
+  currentTextShow: 0
 --- !u!4 &2001543674
 Transform:
   m_ObjectHideFlags: 0
@@ -1393,7 +1455,7 @@ Transform:
   m_GameObject: {fileID: 2001543672}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1551.3818, y: 356.34753, z: -137.22717}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1408,3 +1470,4 @@ SceneRoots:
   - {fileID: 2001543674}
   - {fileID: 1163848186}
   - {fileID: 668198958}
+  - {fileID: 323210797}
